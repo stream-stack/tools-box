@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tools
+spec:
+  selector:
+    matchLabels:
+      tools: tools
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        tools: tools
+    spec:
+      containers:
+        - command:
+            - cat
+          image: ccr.ccs.tencentyun.com/stream/stream:tools-box
+          name: tools
+          tty: true
